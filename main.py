@@ -42,6 +42,7 @@ def get_db_connection():
             user="avnadmin",
             password="AVNS_5imB7Ik3E5QV44jR009",
             database="auth_api",
+            port=12739,
             connection_timeout=10,  # ← Reducir timeout
             autocommit=True  # ← Para no hacer commit manualmente
         )
