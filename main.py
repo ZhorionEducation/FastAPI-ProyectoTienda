@@ -114,3 +114,14 @@ def logout_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
     # en este ejemplo no hacemos nada con el token, pero en una aplicación real podríamos agregarlo a una lista negra para invalidarlo
     payload = verificar_token(token)
     return {"message": "Sesión cerrada exitosamente"}
+
+@app.get("/token-expiry")
+def token_expiry(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token = credentials.credentials
+    payload = verificar_token(token)
+    exp_timestamp = payload.get("exp")
+    if exp_timestamp is None:
+        raise HTTPException(status_code=400, detail="Token no tiene fecha de expiración")
+    
+    exp_datetime = datetime.utcfromtimestamp(exp_timestamp)
+    return {"expiry": exp_datetime.isoformat() + "Z"}
