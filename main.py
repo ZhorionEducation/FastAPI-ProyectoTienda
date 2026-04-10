@@ -32,7 +32,7 @@ def crear_token(data: dict):
     # Creamos un token JWT con la información del usuario y la fecha de expiración
     to_encode = data.copy()
     # el token expira en 5 minutos
-    expire = datetime.utcnow() + timedelta(minutes=1)
+    expire = datetime.utcnow() + timedelta(minutes=2)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
