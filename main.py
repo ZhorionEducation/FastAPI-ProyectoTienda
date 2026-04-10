@@ -38,10 +38,10 @@ def verificar_token(token: str):
 def get_db_connection():
     try:
         connection = connect(
-            host="localhost",
-            user="root",
-            password="12345",
-            database="auth_Tienda"
+            host="mysql-387ba388-base-datos-mysql.l.aivencloud.com",
+            user="avnadmin",
+            password="AVNS_5imB7Ik3E5QV44jR009",
+            database="auth_api"
         )
         return connection
     except Error as e:
