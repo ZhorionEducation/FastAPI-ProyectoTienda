@@ -41,7 +41,9 @@ def get_db_connection():
             host="mysql-387ba388-base-datos-mysql.l.aivencloud.com",
             user="avnadmin",
             password="AVNS_5imB7Ik3E5QV44jR009",
-            database="auth_api"
+            database="auth_api",
+            connection_timeout=10,  # ← Reducir timeout
+            autocommit=True  # ← Para no hacer commit manualmente
         )
         return connection
     except Error as e:
