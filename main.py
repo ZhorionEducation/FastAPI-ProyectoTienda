@@ -6,9 +6,20 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from mysql.connector import connect, Error
 from datetime import datetime, timedelta
 from fastapi import Depends
+from fastapi.middleware.cors import CORSMiddleware
+
 
 
 app = FastAPI()
+
+# Configurar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite todas las direcciones (en producción especificar dominio)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Creamos una secret key para firmar los tokens JWT
 SECRET_KEY = "x9fK#2lP!q8Zs7@LmN0aB$wYtR5uE3c"
